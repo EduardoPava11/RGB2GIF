@@ -1,0 +1,410 @@
+{
+  "project": "RGB2GIF",
+  "version": "1.0.0",
+  "lastUpdated": "2025-10-04",
+  "sprints": [
+    {
+      "id": "sprint-1",
+      "name": "Core UI Refactoring & Locked State",
+      "duration": "1 week",
+      "startDate": "2025-10-07",
+      "endDate": "2025-10-11",
+      "goals": [
+        "Complete UI refactoring to use GIPThemeable components",
+        "Implement camera-only locked state",
+        "Create unlock animation"
+      ],
+      "tasks": [
+        {
+          "id": "1.1",
+          "title": "Refactor Status Labels to GIPLabel",
+          "description": "Convert statusLabel, frameCountLabel, paletteStrategyLabel, and paletteStrategyStatsLabel from UILabel to GIPLabel with appropriate emphasis levels.",
+          "priority": "critical",
+          "effort": "1 hour",
+          "assignee": "developer",
+          "phase": "Phase 1: UI Refactoring",
+          "dependencies": [],
+          "files": ["Sources/Camera/SimpleRealCameraViewController.swift:105-154"],
+          "validation": [
+            "Fresh install shows labels in white (B&W theme)",
+            "After first capture, labels change to theme colors",
+            "Second capture updates label colors to new theme",
+            "Color transitions are smooth (0.3s animation)"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "1.2",
+          "title": "Refactor Capture Button to GIPButton",
+          "description": "Convert captureButton from UIButton to GIPButton with primary style.",
+          "priority": "critical",
+          "effort": "1 hour",
+          "assignee": "developer",
+          "phase": "Phase 1: UI Refactoring",
+          "dependencies": [],
+          "files": ["Sources/Camera/SimpleRealCameraViewController.swift:176-184"],
+          "validation": [
+            "Button starts with B&W colors",
+            "After unlock, button uses primary theme color",
+            "Button state changes work correctly",
+            "Haptic feedback still triggers"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "1.3",
+          "title": "Refactor Slider & Segmented Control",
+          "description": "Convert paletteStrategySlider to GIPSlider and dimensionSegmentedControl to GIPSegmentedControl.",
+          "priority": "high",
+          "effort": "30 minutes",
+          "assignee": "developer",
+          "phase": "Phase 1: UI Refactoring",
+          "dependencies": [],
+          "files": ["Sources/Camera/SimpleRealCameraViewController.swift:129-161"],
+          "validation": [
+            "Slider thumb color matches theme.accent",
+            "Slider track uses theme.primary",
+            "Segmented control selected state uses theme.primary"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "1.4",
+          "title": "Refactor Progress View to GIPProgressView",
+          "description": "Convert progressBar from UIProgressView to GIPProgressView.",
+          "priority": "high",
+          "effort": "30 minutes",
+          "assignee": "developer",
+          "phase": "Phase 1: UI Refactoring",
+          "dependencies": [],
+          "files": ["Sources/Camera/SimpleRealCameraViewController.swift:197-224"],
+          "validation": [
+            "Progress bar animates smoothly",
+            "Bar color matches theme.primary",
+            "Track color uses theme.background with alpha"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "1.5",
+          "title": "Add Gradient Background with GIPBackgroundView",
+          "description": "Add GIPBackgroundView with gradient enabled as the base background layer.",
+          "priority": "medium",
+          "effort": "30 minutes",
+          "assignee": "developer",
+          "phase": "Phase 1: UI Refactoring",
+          "dependencies": [],
+          "files": ["Sources/Camera/SimpleRealCameraViewController.swift:101-103"],
+          "validation": [
+            "Fresh install shows black → dark gray gradient",
+            "After unlock, gradient uses theme colors",
+            "Gradient rotates correctly on device rotation"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "1.6",
+          "title": "End-to-End Theme Transition Test",
+          "description": "Complete manual and automated testing of theme transition flow from B&W to colored.",
+          "priority": "critical",
+          "effort": "2 hours",
+          "assignee": "qa",
+          "phase": "Phase 1: UI Refactoring",
+          "dependencies": ["1.1", "1.2", "1.3", "1.4", "1.5"],
+          "files": ["Tests/ThemeTransitionTests.swift"],
+          "validation": [
+            "Fresh install shows B&W UI",
+            "First capture triggers theme change",
+            "Second capture updates theme",
+            "Theme persists across app restarts"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "2.1",
+          "title": "Create CameraOnlyViewController",
+          "description": "Build minimal camera-only view controller for fresh installs with B&W UI and unlock instruction overlay.",
+          "priority": "critical",
+          "effort": "3 hours",
+          "assignee": "developer",
+          "phase": "Phase 2: Locked State",
+          "dependencies": ["1.6"],
+          "files": ["Sources/Camera/CameraOnlyViewController.swift"],
+          "validation": [
+            "Fresh install shows only camera + instruction + button",
+            "All text is white (B&W theme)",
+            "Capture button works identically to main app",
+            "Frame counter updates in real-time"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "2.2",
+          "title": "Update SceneDelegate Launch Logic",
+          "description": "Add unlock state check in SceneDelegate to route to CameraOnlyViewController or main app.",
+          "priority": "critical",
+          "effort": "30 minutes",
+          "assignee": "developer",
+          "phase": "Phase 2: Locked State",
+          "dependencies": ["2.1"],
+          "files": ["Sources/Supporting Files/SceneDelegate.swift"],
+          "validation": [
+            "Fresh install launches CameraOnlyViewController",
+            "After unlock, app restart launches main app",
+            "No duplicate camera sessions"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "2.3",
+          "title": "Implement Unlock Animation",
+          "description": "Create B&W → color bloom animation with confetti effect and haptic feedback.",
+          "priority": "high",
+          "effort": "2 hours",
+          "assignee": "developer",
+          "phase": "Phase 2: Locked State",
+          "dependencies": ["2.2"],
+          "files": ["Sources/Camera/CameraOnlyViewController.swift"],
+          "validation": [
+            "Animation is smooth (60 FPS)",
+            "Color bloom expands from center",
+            "Haptic feedback fires",
+            "Confetti appears",
+            "Transition is seamless"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "2.4",
+          "title": "Integration Test - Locked → Unlocked Flow",
+          "description": "Complete end-to-end testing of fresh install → capture → unlock → restart flow.",
+          "priority": "critical",
+          "effort": "1 hour",
+          "assignee": "qa",
+          "phase": "Phase 2: Locked State",
+          "dependencies": ["2.3"],
+          "files": ["Tests/UnlockFlowTests.swift"],
+          "validation": [
+            "Fresh install shows CameraOnlyViewController",
+            "First capture triggers unlock animation",
+            "App restarts to main app (not camera-only)"
+          ],
+          "status": "todo"
+        }
+      ]
+    },
+    {
+      "id": "sprint-2",
+      "name": "Main Menu Gallery & Polish",
+      "duration": "1 week",
+      "startDate": "2025-10-14",
+      "endDate": "2025-10-18",
+      "goals": [
+        "Build tab bar with three gallery views",
+        "Implement palette swapping",
+        "Complete edge case testing",
+        "Performance tuning and polish"
+      ],
+      "tasks": [
+        {
+          "id": "3.1",
+          "title": "Create MainTabBarController",
+          "description": "Build themeable tab bar controller with three tabs (Palettes, Captures, GIFs).",
+          "priority": "high",
+          "effort": "2 hours",
+          "assignee": "developer",
+          "phase": "Phase 3: Main Menu Gallery",
+          "dependencies": ["2.4"],
+          "files": ["Sources/UI/MainTabBarController.swift"],
+          "validation": [
+            "Tab bar shows three tabs",
+            "Tab bar colors match current theme",
+            "Switching tabs works",
+            "Theme updates change tab bar colors"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "3.2",
+          "title": "Create GIPLibraryViewController (Palettes Tab)",
+          "description": "Build palette browser with grid layout, tap-to-load-theme functionality, and active palette indicator.",
+          "priority": "high",
+          "effort": "4 hours",
+          "assignee": "developer",
+          "phase": "Phase 3: Main Menu Gallery",
+          "dependencies": ["3.1"],
+          "files": ["Sources/Gallery/GIPLibraryViewController.swift"],
+          "validation": [
+            "Shows all captured palettes",
+            "Tapping palette changes app theme",
+            "Active palette has visual indicator",
+            "Empty state shown if no palettes"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "3.3",
+          "title": "Create GIXBrowserViewController (Captures Tab)",
+          "description": "Build capture browser with list of all captures, metadata display, and palette swap button.",
+          "priority": "high",
+          "effort": "4 hours",
+          "assignee": "developer",
+          "phase": "Phase 3: Main Menu Gallery",
+          "dependencies": ["3.1"],
+          "files": ["Sources/Gallery/GIXBrowserViewController.swift"],
+          "validation": [
+            "Shows all captures with metadata",
+            "Tap capture shows details",
+            "Swap Palette button works",
+            "Empty state handled"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "3.4",
+          "title": "Create GIFGalleryViewController (GIFs Tab)",
+          "description": "Build GIF gallery with playing thumbnails, full-screen viewer, share and delete buttons.",
+          "priority": "high",
+          "effort": "3 hours",
+          "assignee": "developer",
+          "phase": "Phase 3: Main Menu Gallery",
+          "dependencies": ["3.1"],
+          "files": ["Sources/Gallery/GIFGalleryViewController.swift"],
+          "validation": [
+            "Grid shows playing GIF thumbnails",
+            "Tap GIF opens full-screen viewer",
+            "Share button works",
+            "Delete button with confirmation"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "3.5",
+          "title": "Update SceneDelegate for MainTabBarController",
+          "description": "Replace placeholder with MainTabBarController for unlocked state.",
+          "priority": "high",
+          "effort": "15 minutes",
+          "assignee": "developer",
+          "phase": "Phase 3: Main Menu Gallery",
+          "dependencies": ["3.2", "3.3", "3.4"],
+          "files": ["Sources/Supporting Files/SceneDelegate.swift"],
+          "validation": [
+            "Unlocked app launches to tab bar",
+            "All three tabs accessible",
+            "Theme persists across tabs"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "4.1",
+          "title": "Error Handling Implementation",
+          "description": "Implement graceful error handling for disk full, permissions denied, corrupt files, and other edge cases.",
+          "priority": "high",
+          "effort": "3 hours",
+          "assignee": "developer",
+          "phase": "Phase 4: Testing & Polish",
+          "dependencies": ["3.5"],
+          "files": ["Sources/Core/CartridgeManager.swift", "Sources/Core/ErrorHandling.swift"],
+          "validation": [
+            "Disk full handled gracefully",
+            "Permission denials show user-friendly alerts",
+            "Corrupt files don't crash app",
+            "Partial cartridges cleaned up"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "4.2",
+          "title": "Memory Profiling",
+          "description": "Profile memory usage with Instruments for leaks, allocations, and retain cycles.",
+          "priority": "high",
+          "effort": "2 hours",
+          "assignee": "qa",
+          "phase": "Phase 4: Testing & Polish",
+          "dependencies": ["3.5"],
+          "files": [],
+          "validation": [
+            "Capture 10 GIFs shows no memory leak",
+            "Gallery with 100 cartridges efficient",
+            "Rapid theme switching has no retain cycles",
+            "Background/foreground cycles stable"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "4.3",
+          "title": "Performance Tuning",
+          "description": "Optimize theme extraction, gallery scrolling, animations, and cartridge creation to meet performance targets.",
+          "priority": "medium",
+          "effort": "3 hours",
+          "assignee": "developer",
+          "phase": "Phase 4: Testing & Polish",
+          "dependencies": ["4.2"],
+          "files": [],
+          "validation": [
+            "Theme extraction < 50ms",
+            "Gallery scroll @ 60 FPS",
+            "Unlock animation @ 60 FPS",
+            "Cartridge creation < 100ms"
+          ],
+          "status": "todo"
+        },
+        {
+          "id": "4.4",
+          "title": "Edge Case Testing",
+          "description": "Test force quit scenarios, permission changes, disk full, large datasets, and backup restores.",
+          "priority": "high",
+          "effort": "2 hours",
+          "assignee": "qa",
+          "phase": "Phase 4: Testing & Polish",
+          "dependencies": ["4.1"],
+          "files": ["Tests/EdgeCaseTests.swift"],
+          "validation": [
+            "Force quit during capture recovers",
+            "Force quit during processing recovers",
+            "Permission changes handled",
+            "1000+ cartridges loads efficiently",
+            "Deleted files handled gracefully"
+          ],
+          "status": "todo"
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "themeTransitionTime": {
+      "target": "< 300ms",
+      "validation": "Instruments Time Profiler"
+    },
+    "unlockAnimationFPS": {
+      "target": "60 FPS",
+      "validation": "Instruments Core Animation"
+    },
+    "memoryUsage": {
+      "target": "< 200MB (10 captures)",
+      "validation": "Instruments Allocations"
+    },
+    "galleryScrollFPS": {
+      "target": "60 FPS",
+      "validation": "Instruments Core Animation"
+    },
+    "cartridgeCreationTime": {
+      "target": "< 100ms",
+      "validation": "Custom logging"
+    },
+    "appLaunchTime": {
+      "target": "< 1s (unlocked)",
+      "validation": "Instruments App Launch"
+    }
+  },
+  "releaseChecklist": [
+    "All tasks marked DONE",
+    "All validation checkboxes passed",
+    "Performance metrics met",
+    "Memory profiling clean",
+    "Edge cases handled",
+    "Error handling tested",
+    "Documentation updated",
+    "Build succeeds on device"
+  ]
+}

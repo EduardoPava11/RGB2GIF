@@ -1,0 +1,23 @@
+{
+  "name": "KataGo9x9_Temporal",
+  "version": 12,
+  "board_size": 9,
+  "rule_set": "tromp-taylor",
+  "role": "temporal_player",
+  "description": "Fighting style - dynamic moments, aggressive play",
+  "use_fixup": true,
+  "support_japanese_rules": false,
+  "use_scoremean_as_lead": true,
+  "komi": 7.0,
+  "attention_config": {
+    "provider": "key",
+    "merge_strategy": "geometric",
+    "input_features": "frame_statistics",
+    "output_dimension": 81
+  },
+  "model_source": {
+    "base_model": "kata9x9-b18c384nbt",
+    "converted_from": "RAWGo/Models/KataGo9x9.mlpackage",
+    "conversion_date": "2025-12-03"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "KataGo9x9_Spatial",
+  "version": 12,
+  "board_size": 9,
+  "rule_set": "japanese",
+  "role": "spatial_player",
+  "description": "Territorial style - stable regions, defensive play",
+  "use_fixup": true,
+  "support_japanese_rules": true,
+  "use_scoremean_as_lead": false,
+  "komi": 5.5,
+  "attention_config": {
+    "provider": "query",
+    "merge_strategy": "geometric",
+    "input_features": "tile_statistics",
+    "output_dimension": 81
+  },
+  "model_source": {
+    "base_model": "kata9x9-b18c384nbt",
+    "converted_from": "RAWGo/Models/KataGo9x9.mlpackage",
+    "conversion_date": "2025-12-03"
+  }
+}

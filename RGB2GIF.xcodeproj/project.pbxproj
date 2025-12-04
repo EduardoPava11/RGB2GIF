@@ -1,0 +1,579 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		21DB72B847C8222AF4247664 /* CrossStageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D9A23F81D79066E3BCEC3 /* CrossStageTests.swift */; };
+		3715371CF58865A841F13A73 /* L3TensorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9164CB9DABA5CFACB24ED2F2 /* L3TensorTests.swift */; };
+		3AF1F3E39256B74259083C12 /* MinimalGIFDebugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B832BFF3A36151B13354CD88 /* MinimalGIFDebugTests.swift */; };
+		3BC9E6AAED5D57E9CC666DAE /* LZWDiagnosticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AACB359DFDB2BB3E0F4E165 /* LZWDiagnosticTests.swift */; };
+		678EA7E03C64651E27215296 /* L2FrameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E4EDE9AA8E2BD9FEE052C /* L2FrameTests.swift */; };
+		86F386AEAF8D118C18BA9386 /* PipelineTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B06BA205B300719D06145C5 /* PipelineTestSuite.swift */; };
+		99F334879569F18C1F9FB4C8 /* L0RawTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696D4BCCCA7EB4B2BB423C5 /* L0RawTests.swift */; };
+		CB857B8577517D1E4950DFA1 /* L4PaletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AFF277ADD034C3A7537AE7 /* L4PaletteTests.swift */; };
+		CROPVERIF0002A2B3C4D5E001 /* CropResizeVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CROPVERIF0001A2B3C4D5E001 /* CropResizeVerificationTests.swift */; };
+		D81C71906192F933F4FBA127 /* TestReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D96749778F29F8730974B /* TestReport.swift */; };
+		E05B3DC05352BAEFA1D9A73C /* FrameFormatConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC4AD8669962E06AA4BE36A /* FrameFormatConverter.swift */; };
+		E584241AFFA1D96EB820EED3 /* L5IndicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F63A1D60DA38C85B5BDB2AD /* L5IndicesTests.swift */; };
+		GIFDIAG00002A2B3C4D5E001 /* GIFStructureDiagnostic.swift in Sources */ = {isa = PBXBuildFile; fileRef = GIFDIAG00001A2B3C4D5E001 /* GIFStructureDiagnostic.swift */; };
+		MVP0APP00001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0APP00002 /* AppDelegate.swift */; };
+		MVP0APP00003 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0APP00004 /* SceneDelegate.swift */; };
+		MVP0CAM00001 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0CAM00002 /* CameraManager.swift */; };
+		MVP0CAM00003 /* FrameBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0CAM00004 /* FrameBuffer.swift */; };
+		MVP0CBR00001 /* CBORSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0CBR00002 /* CBORSessionManager.swift */; };
+		MVP0CBR00003 /* CBORManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0CBR00004 /* CBORManifest.swift */; };
+		MVP0CBR00005 /* CBORFrameExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0CBR00006 /* CBORFrameExporter.swift */; };
+		MVP0CBR00007 /* CBORTensorExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0CBR00008 /* CBORTensorExporter.swift */; };
+		MVP0CBR00009 /* CBORPaletteExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0CBR00010 /* CBORPaletteExporter.swift */; };
+		MVP0CBR00011 /* CBORIndicesExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0CBR00012 /* CBORIndicesExporter.swift */; };
+		MVP0CBR00013 /* SessionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0CBR00014 /* SessionCoordinator.swift */; };
+		MVP0COR00001 /* RGB2GIFErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0COR00002 /* RGB2GIFErrors.swift */; };
+		MVP0GIF00001 /* GIFWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0GIF00002 /* GIFWriter.swift */; };
+		MVP0GIF00003 /* LZWEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0GIF00004 /* LZWEncoder.swift */; };
+		MVP0GIF00005 /* PhotosSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0GIF00006 /* PhotosSaver.swift */; };
+		MVP0PIP00001 /* GIF81Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0PIP00002 /* GIF81Pipeline.swift */; };
+		MVP0PIP00003 /* OctreeColorQuantizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0PIP00004 /* OctreeColorQuantizer.swift */; };
+		MVP0PIP00005 /* TensorCube729.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0PIP00006 /* TensorCube729.swift */; };
+		MVP0PIP00007 /* VoxelCube729.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0PIP00008 /* VoxelCube729.swift */; };
+		MVP0PIP00009 /* GIF81Debugger.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0PIP00010 /* GIF81Debugger.swift */; };
+		MVP0PKG00002 /* SwiftCBOR in Frameworks */ = {isa = PBXBuildFile; productRef = MVP0PKG00003 /* SwiftCBOR */; };
+		MVP0RES00001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = MVP0RES00002 /* Assets.xcassets */; };
+		MVP0RES00003 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = MVP0RES00004 /* LaunchScreen.storyboard */; };
+		MVP0UIF00001 /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0UIF00002 /* CaptureViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0AACB359DFDB2BB3E0F4E165 /* LZWDiagnosticTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LZWDiagnosticTests.swift; path = LZWDiagnosticTests.swift; sourceTree = "<group>"; };
+		0B06BA205B300719D06145C5 /* PipelineTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PipelineTestSuite.swift; path = PipelineTestSuite.swift; sourceTree = "<group>"; };
+		41AFF277ADD034C3A7537AE7 /* L4PaletteTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = L4PaletteTests.swift; path = L4PaletteTests.swift; sourceTree = "<group>"; };
+		583D9A23F81D79066E3BCEC3 /* CrossStageTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CrossStageTests.swift; path = CrossStageTests.swift; sourceTree = "<group>"; };
+		611D96749778F29F8730974B /* TestReport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TestReport.swift; path = TestReport.swift; sourceTree = "<group>"; };
+		6F63A1D60DA38C85B5BDB2AD /* L5IndicesTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = L5IndicesTests.swift; path = L5IndicesTests.swift; sourceTree = "<group>"; };
+		9164CB9DABA5CFACB24ED2F2 /* L3TensorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = L3TensorTests.swift; path = L3TensorTests.swift; sourceTree = "<group>"; };
+		AAC4AD8669962E06AA4BE36A /* FrameFormatConverter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FrameFormatConverter.swift; sourceTree = "<group>"; };
+		B696D4BCCCA7EB4B2BB423C5 /* L0RawTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = L0RawTests.swift; path = L0RawTests.swift; sourceTree = "<group>"; };
+		B832BFF3A36151B13354CD88 /* MinimalGIFDebugTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MinimalGIFDebugTests.swift; path = ../../../RGB2GIF/Sources/Pipeline/MinimalGIFDebugTests.swift; sourceTree = "<group>"; };
+		CROPVERIF0001A2B3C4D5E001 /* CropResizeVerificationTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CropResizeVerificationTests.swift; path = CropResizeVerificationTests.swift; sourceTree = "<group>"; };
+		F64E4EDE9AA8E2BD9FEE052C /* L2FrameTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = L2FrameTests.swift; path = L2FrameTests.swift; sourceTree = "<group>"; };
+		GIFDIAG00001A2B3C4D5E001 /* GIFStructureDiagnostic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GIFStructureDiagnostic.swift; path = GIFStructureDiagnostic.swift; sourceTree = "<group>"; };
+		MVP0APP00002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		MVP0APP00004 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		MVP0CAM00002 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		MVP0CAM00004 /* FrameBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameBuffer.swift; sourceTree = "<group>"; };
+		MVP0CBR00002 /* CBORSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBORSessionManager.swift; sourceTree = "<group>"; };
+		MVP0CBR00004 /* CBORManifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBORManifest.swift; sourceTree = "<group>"; };
+		MVP0CBR00006 /* CBORFrameExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBORFrameExporter.swift; sourceTree = "<group>"; };
+		MVP0CBR00008 /* CBORTensorExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBORTensorExporter.swift; sourceTree = "<group>"; };
+		MVP0CBR00010 /* CBORPaletteExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBORPaletteExporter.swift; sourceTree = "<group>"; };
+		MVP0CBR00012 /* CBORIndicesExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CBORIndicesExporter.swift; sourceTree = "<group>"; };
+		MVP0CBR00014 /* SessionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCoordinator.swift; sourceTree = "<group>"; };
+		MVP0COR00002 /* RGB2GIFErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB2GIFErrors.swift; sourceTree = "<group>"; };
+		MVP0GIF00002 /* GIFWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIFWriter.swift; sourceTree = "<group>"; };
+		MVP0GIF00004 /* LZWEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LZWEncoder.swift; sourceTree = "<group>"; };
+		MVP0GIF00006 /* PhotosSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosSaver.swift; sourceTree = "<group>"; };
+		MVP0PIP00002 /* GIF81Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIF81Pipeline.swift; sourceTree = "<group>"; };
+		MVP0PIP00004 /* OctreeColorQuantizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OctreeColorQuantizer.swift; sourceTree = "<group>"; };
+		MVP0PIP00006 /* TensorCube729.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensorCube729.swift; sourceTree = "<group>"; };
+		MVP0PIP00008 /* VoxelCube729.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoxelCube729.swift; sourceTree = "<group>"; };
+		MVP0PIP00010 /* GIF81Debugger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIF81Debugger.swift; sourceTree = "<group>"; };
+		MVP0PRD00001 /* RGB2GIF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RGB2GIF.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		MVP0RES00002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		MVP0RES00004 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		MVP0RES00005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		MVP0UIF00002 /* CaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		MVP0FRM00001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				MVP0PKG00002 /* SwiftCBOR in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4FB3E1986723FF3F1EE28EBF /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				611D96749778F29F8730974B /* TestReport.swift */,
+				B696D4BCCCA7EB4B2BB423C5 /* L0RawTests.swift */,
+				F64E4EDE9AA8E2BD9FEE052C /* L2FrameTests.swift */,
+				9164CB9DABA5CFACB24ED2F2 /* L3TensorTests.swift */,
+				41AFF277ADD034C3A7537AE7 /* L4PaletteTests.swift */,
+				6F63A1D60DA38C85B5BDB2AD /* L5IndicesTests.swift */,
+				583D9A23F81D79066E3BCEC3 /* CrossStageTests.swift */,
+				CROPVERIF0001A2B3C4D5E001 /* CropResizeVerificationTests.swift */,
+				GIFDIAG00001A2B3C4D5E001 /* GIFStructureDiagnostic.swift */,
+				0B06BA205B300719D06145C5 /* PipelineTestSuite.swift */,
+				0AACB359DFDB2BB3E0F4E165 /* LZWDiagnosticTests.swift */,
+			);
+			name = Testing;
+			path = Testing;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00001 = {
+			isa = PBXGroup;
+			children = (
+				MVP0GRP00002 /* RGB2GIF */,
+				MVP0GRP00003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		MVP0GRP00002 /* RGB2GIF */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0GRP00004 /* Sources */,
+				MVP0GRP00005 /* Resources */,
+			);
+			path = RGB2GIF;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0PRD00001 /* RGB2GIF.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00004 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0GRP00010 /* App */,
+				MVP0GRP00011 /* Camera */,
+				MVP0GRP00016 /* CBOR */,
+				MVP0GRP00012 /* Core */,
+				MVP0GRP00013 /* GIF */,
+				MVP0GRP00014 /* Pipeline */,
+				MVP0GRP00015 /* UI */,
+				4FB3E1986723FF3F1EE28EBF /* Testing */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00005 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0RES00002 /* Assets.xcassets */,
+				MVP0RES00004 /* LaunchScreen.storyboard */,
+				MVP0RES00005 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00010 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0APP00002 /* AppDelegate.swift */,
+				MVP0APP00004 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00011 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0CAM00002 /* CameraManager.swift */,
+				MVP0CAM00004 /* FrameBuffer.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00012 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0COR00002 /* RGB2GIFErrors.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00013 /* GIF */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0GIF00002 /* GIFWriter.swift */,
+				MVP0GIF00004 /* LZWEncoder.swift */,
+				MVP0GIF00006 /* PhotosSaver.swift */,
+			);
+			path = GIF;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00014 /* Pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0PIP00002 /* GIF81Pipeline.swift */,
+				MVP0PIP00004 /* OctreeColorQuantizer.swift */,
+				MVP0PIP00006 /* TensorCube729.swift */,
+				MVP0PIP00008 /* VoxelCube729.swift */,
+				MVP0PIP00010 /* GIF81Debugger.swift */,
+				AAC4AD8669962E06AA4BE36A /* FrameFormatConverter.swift */,
+				B832BFF3A36151B13354CD88 /* MinimalGIFDebugTests.swift */,
+			);
+			path = Pipeline;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00015 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0UIF00002 /* CaptureViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		MVP0GRP00016 /* CBOR */ = {
+			isa = PBXGroup;
+			children = (
+				MVP0CBR00002 /* CBORSessionManager.swift */,
+				MVP0CBR00004 /* CBORManifest.swift */,
+				MVP0CBR00006 /* CBORFrameExporter.swift */,
+				MVP0CBR00008 /* CBORTensorExporter.swift */,
+				MVP0CBR00010 /* CBORPaletteExporter.swift */,
+				MVP0CBR00012 /* CBORIndicesExporter.swift */,
+				MVP0CBR00014 /* SessionCoordinator.swift */,
+			);
+			path = CBOR;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		MVP0TGT00001 /* RGB2GIF */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = MVP0CFG00001 /* Build configuration list for PBXNativeTarget "RGB2GIF" */;
+			buildPhases = (
+				MVP0SRC00001 /* Sources */,
+				MVP0FRM00001 /* Frameworks */,
+				MVP0RSC00001 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RGB2GIF;
+			packageProductDependencies = (
+				MVP0PKG00003 /* SwiftCBOR */,
+			);
+			productName = RGB2GIF;
+			productReference = MVP0PRD00001 /* RGB2GIF.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		MVP0PRJ00001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					MVP0TGT00001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = MVP0CFG00002 /* Build configuration list for PBXProject "RGB2GIF" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = MVP0GRP00001;
+			packageReferences = (
+				MVP0PKG00001 /* XCRemoteSwiftPackageReference "SwiftCBOR" */,
+			);
+			productRefGroup = MVP0GRP00003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				MVP0TGT00001 /* RGB2GIF */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		MVP0RSC00001 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				MVP0RES00001 /* Assets.xcassets in Resources */,
+				MVP0RES00003 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		MVP0SRC00001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				MVP0APP00001 /* AppDelegate.swift in Sources */,
+				MVP0APP00003 /* SceneDelegate.swift in Sources */,
+				MVP0CAM00001 /* CameraManager.swift in Sources */,
+				MVP0CAM00003 /* FrameBuffer.swift in Sources */,
+				MVP0CBR00001 /* CBORSessionManager.swift in Sources */,
+				MVP0CBR00003 /* CBORManifest.swift in Sources */,
+				MVP0CBR00005 /* CBORFrameExporter.swift in Sources */,
+				MVP0CBR00007 /* CBORTensorExporter.swift in Sources */,
+				MVP0CBR00009 /* CBORPaletteExporter.swift in Sources */,
+				MVP0CBR00011 /* CBORIndicesExporter.swift in Sources */,
+				MVP0CBR00013 /* SessionCoordinator.swift in Sources */,
+				MVP0COR00001 /* RGB2GIFErrors.swift in Sources */,
+				MVP0GIF00001 /* GIFWriter.swift in Sources */,
+				MVP0GIF00003 /* LZWEncoder.swift in Sources */,
+				MVP0GIF00005 /* PhotosSaver.swift in Sources */,
+				MVP0PIP00001 /* GIF81Pipeline.swift in Sources */,
+				MVP0PIP00003 /* OctreeColorQuantizer.swift in Sources */,
+				MVP0PIP00005 /* TensorCube729.swift in Sources */,
+				MVP0PIP00007 /* VoxelCube729.swift in Sources */,
+				MVP0PIP00009 /* GIF81Debugger.swift in Sources */,
+				MVP0UIF00001 /* CaptureViewController.swift in Sources */,
+				E05B3DC05352BAEFA1D9A73C /* FrameFormatConverter.swift in Sources */,
+				3AF1F3E39256B74259083C12 /* MinimalGIFDebugTests.swift in Sources */,
+				D81C71906192F933F4FBA127 /* TestReport.swift in Sources */,
+				99F334879569F18C1F9FB4C8 /* L0RawTests.swift in Sources */,
+				678EA7E03C64651E27215296 /* L2FrameTests.swift in Sources */,
+				3715371CF58865A841F13A73 /* L3TensorTests.swift in Sources */,
+				CB857B8577517D1E4950DFA1 /* L4PaletteTests.swift in Sources */,
+				E584241AFFA1D96EB820EED3 /* L5IndicesTests.swift in Sources */,
+				21DB72B847C8222AF4247664 /* CrossStageTests.swift in Sources */,
+				CROPVERIF0002A2B3C4D5E001 /* CropResizeVerificationTests.swift in Sources */,
+				GIFDIAG00002A2B3C4D5E001 /* GIFStructureDiagnostic.swift in Sources */,
+				86F386AEAF8D118C18BA9386 /* PipelineTestSuite.swift in Sources */,
+				3BC9E6AAED5D57E9CC666DAE /* LZWDiagnosticTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		MVP0BLD00001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9WANULVN2G;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		MVP0BLD00002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9WANULVN2G;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		MVP0BLD00003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WANULVN2G;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = RGB2GIF/Resources/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rgb2gif.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		MVP0BLD00004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WANULVN2G;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = RGB2GIF/Resources/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rgb2gif.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		MVP0CFG00001 /* Build configuration list for PBXNativeTarget "RGB2GIF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				MVP0BLD00003 /* Debug */,
+				MVP0BLD00004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		MVP0CFG00002 /* Build configuration list for PBXProject "RGB2GIF" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				MVP0BLD00001 /* Debug */,
+				MVP0BLD00002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		MVP0PKG00001 /* XCRemoteSwiftPackageReference "SwiftCBOR" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/unrelentingtech/SwiftCBOR.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		MVP0PKG00003 /* SwiftCBOR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = MVP0PKG00001 /* XCRemoteSwiftPackageReference "SwiftCBOR" */;
+			productName = SwiftCBOR;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = MVP0PRJ00001 /* Project object */;
+}

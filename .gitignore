@@ -1,0 +1,38 @@
+# Xcode
+DerivedData/
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+*.xcworkspace
+!default.xcworkspace
+xcuserdata/
+
+# Build products
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+*.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
+
+# CocoaPods
+Pods/
+*.xcworkspace
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Debug files
+debug_*.swift
+/tmp/
+
+# Test output
+*.log
+test_output/

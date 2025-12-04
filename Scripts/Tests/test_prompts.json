@@ -1,0 +1,159 @@
+{
+  "version": "1.0.0",
+  "description": "LLM verification prompts for RGB2GIF test framework",
+  "model": "ibm/granite-4-h-tiny",
+  "prompts": {
+    "system_base": "You are a Swift code test verifier for iOS 26. Analyze test results and code snippets. IMPORTANT: Respond ONLY with valid JSON in the exact format specified. Do NOT include any text before or after the JSON.",
+
+    "response_format": {
+      "approved": "boolean - true if test passes all verification criteria",
+      "confidence": "number 0.0-1.0 - how confident you are in the assessment",
+      "issues": "array of strings - specific problems found",
+      "suggestions": "array of strings - recommended improvements"
+    },
+
+    "verification_categories": {
+      "type_safety": {
+        "name": "Type Safety Verification",
+        "criteria": [
+          "All functions have explicit return types",
+          "No force unwraps (!) in production code paths",
+          "Proper error handling with throws/try/catch",
+          "Sendable conformance for types crossing actor boundaries",
+          "Optional binding used instead of force casting"
+        ],
+        "prompt_suffix": "Focus on type safety: explicit types, no force unwraps, proper error handling, Sendable conformance."
+      },
+
+      "ios26_compat": {
+        "name": "iOS 26 Compatibility",
+        "criteria": [
+          "@available(iOS 26.0, *) annotations present where needed",
+          "Swift 6.2 async/await patterns used correctly",
+          "@MainActor isolation for UI-related code",
+          "No deprecated API usage",
+          "Task and TaskGroup used for concurrency"
+        ],
+        "prompt_suffix": "Focus on iOS 26 compatibility: @available annotations, async/await patterns, @MainActor isolation, no deprecated APIs."
+      },
+
+      "test_quality": {
+        "name": "Test Quality Analysis",
+        "criteria": [
+          "Edge cases are tested (empty inputs, boundary values)",
+          "Happy path is covered with meaningful assertions",
+          "Error conditions are properly handled and tested",
+          "Tests are deterministic (no random failures)",
+          "Test isolation - no dependency on external state"
+        ],
+        "prompt_suffix": "Focus on test quality: edge cases covered, assertions meaningful, deterministic behavior, proper isolation."
+      },
+
+      "algorithm_correctness": {
+        "name": "Algorithm Correctness",
+        "criteria": [
+          "Algorithm logic matches documented behavior",
+          "Input validation is comprehensive",
+          "Output matches expected format and constraints",
+          "No off-by-one errors",
+          "Memory safety (no buffer overflows, proper bounds checking)"
+        ],
+        "prompt_suffix": "Focus on algorithm correctness: logic matches spec, proper input validation, correct output format, no off-by-one errors."
+      },
+
+      "memory_alignment": {
+        "name": "Memory Alignment Safety",
+        "criteria": [
+          "Use loadUnaligned() instead of load() for binary data parsing",
+          "Data from file reads may have arbitrary alignment",
+          "UInt16/UInt32/UInt64 must be loaded safely at any byte offset (0-7)",
+          "Data.dropFirst() creates misaligned slices that break pointer alignment",
+          "Never assume Data buffers are naturally aligned to type boundaries"
+        ],
+        "prompt_suffix": "Focus on memory alignment safety: loadUnaligned() for binary parsing, handling misaligned file buffers, safe UInt16/32/64 loads at any offset."
+      }
+    },
+
+    "test_type_prompts": {
+      "octree_quantization": {
+        "system_addition": "You are reviewing an octree color quantization algorithm. This algorithm recursively partitions RGB color space to reduce colors to 256 for GIF encoding.",
+        "key_invariants": [
+          "Output palette must have exactly 256 colors",
+          "All pixel indices must be 0-255",
+          "Palette colors must be unique or meaningfully distributed",
+          "Gradient images should preserve color diversity (not collapse to few colors)"
+        ]
+      },
+
+      "gip_gix_format": {
+        "system_addition": "You are reviewing GIP (palette) and GIX (index stream) format handlers. These are custom binary formats for storing GIF components.",
+        "key_invariants": [
+          "GIP palette size must be power of 2 (2-256)",
+          "GIX dimensions must match declared width/height",
+          "LZW min code size must match palette exponent",
+          "Serialization must round-trip exactly"
+        ]
+      },
+
+      "lzw_compression": {
+        "system_addition": "You are reviewing LZW compression for GIF encoding. The algorithm produces variable-width codes packed into sub-blocks.",
+        "key_invariants": [
+          "Sub-blocks must be <= 255 bytes",
+          "CLEAR and EOI codes must be emitted correctly",
+          "Code size must increase when dictionary fills",
+          "Compressed data must decompress to original"
+        ]
+      },
+
+      "bridge_integration": {
+        "system_addition": "You are reviewing the GIPGIXBridge which converts quantizer output to the GIP+GIX format for GIF muxing.",
+        "key_invariants": [
+          "Dimensions must be preserved exactly",
+          "All palette indices must be valid (< palette size)",
+          "Frame payloads must be non-empty after LZW compression",
+          "Multiple frames must maintain consistent dimensions"
+        ]
+      },
+
+      "memory_alignment": {
+        "system_addition": "You are reviewing memory alignment safety for binary data parsing. Swift's load() requires aligned memory but Data buffers from file reads may be misaligned. Use loadUnaligned() to safely read multi-byte types.",
+        "key_invariants": [
+          "loadUnaligned() must be used instead of load() for binary parsing",
+          "Tests must verify parsing works with deliberately misaligned data",
+          "Data.dropFirst(1) creates misaligned slices that would crash with load()",
+          "UInt16 needs 2-byte alignment, UInt32 needs 4-byte, UInt64 needs 8-byte",
+          "File data read from disk has no alignment guarantees"
+        ]
+      }
+    },
+
+    "example_responses": {
+      "approved_example": {
+        "approved": true,
+        "confidence": 0.95,
+        "issues": [],
+        "suggestions": ["Consider adding @inlinable for performance-critical functions"]
+      },
+
+      "rejected_example": {
+        "approved": false,
+        "confidence": 0.88,
+        "issues": [
+          "Missing @available(iOS 26.0, *) annotation",
+          "Force unwrap on line 15 could crash"
+        ],
+        "suggestions": [
+          "Add @available annotation to function",
+          "Use optional binding instead of force unwrap"
+        ]
+      }
+    }
+  },
+
+  "thresholds": {
+    "minimum_confidence": 0.8,
+    "auto_approve_confidence": 0.95,
+    "max_issues_for_approval": 0,
+    "suggestion_only_threshold": 0.9
+  }
+}
