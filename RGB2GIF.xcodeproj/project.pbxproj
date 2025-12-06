@@ -7,18 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04787A1218085F1A6A8F5274 /* ModeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1E67D6B8A6D1BA7C0843EC /* ModeSelectionView.swift */; };
+		0D1CBB21C669B3AB75FDA758 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8306FCDA93098B63EA95C12E /* BarChartView.swift */; };
+		0E41A339694ED13838B2478E /* ResultsComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1C173AB47F767C987ABF3A /* ResultsComparisonView.swift */; };
+		1DF5608DD22318BAEF003FD5 /* KernelEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A7C927DE8A7016A6B07CF /* KernelEditorView.swift */; };
 		21DB72B847C8222AF4247664 /* CrossStageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D9A23F81D79066E3BCEC3 /* CrossStageTests.swift */; };
+		28DBC40679C5613467C463F3 /* SliceViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81058B46A4EC92C21594A9C0 /* SliceViewerView.swift */; };
+		30D5D8C60F89708DE327509A /* SliderWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19394F3AF6F8603EA61C024 /* SliderWithLabel.swift */; };
 		3715371CF58865A841F13A73 /* L3TensorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9164CB9DABA5CFACB24ED2F2 /* L3TensorTests.swift */; };
 		3AF1F3E39256B74259083C12 /* MinimalGIFDebugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B832BFF3A36151B13354CD88 /* MinimalGIFDebugTests.swift */; };
 		3BC9E6AAED5D57E9CC666DAE /* LZWDiagnosticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AACB359DFDB2BB3E0F4E165 /* LZWDiagnosticTests.swift */; };
+		424A06FD6DD434DF549D1AA5 /* ImportanceWeightEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A42EBE2ECE06D5786F4ABE /* ImportanceWeightEditorView.swift */; };
 		678EA7E03C64651E27215296 /* L2FrameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64E4EDE9AA8E2BD9FEE052C /* L2FrameTests.swift */; };
+		6B5F795D34976588D7A21BAA /* SliceImportanceAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEBD02394D3844BC3C46241 /* SliceImportanceAnalyzer.swift */; };
+		702549865953B44D8200661A /* ColorGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93812380D06DA81DC8460C2 /* ColorGridView.swift */; };
 		86F386AEAF8D118C18BA9386 /* PipelineTestSuite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B06BA205B300719D06145C5 /* PipelineTestSuite.swift */; };
+		8FBD821A26F0FD8371F5505C /* CentroidOverrideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711BE77293600A32ECF8BF62 /* CentroidOverrideView.swift */; };
 		99F334879569F18C1F9FB4C8 /* L0RawTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B696D4BCCCA7EB4B2BB423C5 /* L0RawTests.swift */; };
+		AF850B4E1284C56251B68FE2 /* MVP1State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FFE9AF1C3272F36C420ED9 /* MVP1State.swift */; };
+		CA3D24194ABC67D66D110BD1 /* ProcessingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376933A9688DCE7E1B67089B /* ProcessingMode.swift */; };
 		CB857B8577517D1E4950DFA1 /* L4PaletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41AFF277ADD034C3A7537AE7 /* L4PaletteTests.swift */; };
 		CROPVERIF0002A2B3C4D5E001 /* CropResizeVerificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CROPVERIF0001A2B3C4D5E001 /* CropResizeVerificationTests.swift */; };
 		D81C71906192F933F4FBA127 /* TestReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 611D96749778F29F8730974B /* TestReport.swift */; };
 		E05B3DC05352BAEFA1D9A73C /* FrameFormatConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC4AD8669962E06AA4BE36A /* FrameFormatConverter.swift */; };
 		E584241AFFA1D96EB820EED3 /* L5IndicesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F63A1D60DA38C85B5BDB2AD /* L5IndicesTests.swift */; };
+		FFAD93AC9B151BC55961302D /* MVP1ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B2CD6C8D99B99FA35DC783 /* MVP1ToolsView.swift */; };
 		GIFDIAG00002A2B3C4D5E001 /* GIFStructureDiagnostic.swift in Sources */ = {isa = PBXBuildFile; fileRef = GIFDIAG00001A2B3C4D5E001 /* GIFStructureDiagnostic.swift */; };
 		MVP0APP00001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0APP00002 /* AppDelegate.swift */; };
 		MVP0APP00003 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = MVP0APP00004 /* SceneDelegate.swift */; };
@@ -49,15 +62,28 @@
 /* Begin PBXFileReference section */
 		0AACB359DFDB2BB3E0F4E165 /* LZWDiagnosticTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LZWDiagnosticTests.swift; path = LZWDiagnosticTests.swift; sourceTree = "<group>"; };
 		0B06BA205B300719D06145C5 /* PipelineTestSuite.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PipelineTestSuite.swift; path = PipelineTestSuite.swift; sourceTree = "<group>"; };
+		31FFE9AF1C3272F36C420ED9 /* MVP1State.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MVP1State.swift; sourceTree = "<group>"; };
+		376933A9688DCE7E1B67089B /* ProcessingMode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProcessingMode.swift; sourceTree = "<group>"; };
 		41AFF277ADD034C3A7537AE7 /* L4PaletteTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = L4PaletteTests.swift; path = L4PaletteTests.swift; sourceTree = "<group>"; };
+		4F1E67D6B8A6D1BA7C0843EC /* ModeSelectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ModeSelectionView.swift; sourceTree = "<group>"; };
 		583D9A23F81D79066E3BCEC3 /* CrossStageTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CrossStageTests.swift; path = CrossStageTests.swift; sourceTree = "<group>"; };
+		5CEBD02394D3844BC3C46241 /* SliceImportanceAnalyzer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SliceImportanceAnalyzer.swift; sourceTree = "<group>"; };
+		5E3A7C927DE8A7016A6B07CF /* KernelEditorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = KernelEditorView.swift; sourceTree = "<group>"; };
 		611D96749778F29F8730974B /* TestReport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TestReport.swift; path = TestReport.swift; sourceTree = "<group>"; };
 		6F63A1D60DA38C85B5BDB2AD /* L5IndicesTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = L5IndicesTests.swift; path = L5IndicesTests.swift; sourceTree = "<group>"; };
+		711BE77293600A32ECF8BF62 /* CentroidOverrideView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CentroidOverrideView.swift; sourceTree = "<group>"; };
+		81058B46A4EC92C21594A9C0 /* SliceViewerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SliceViewerView.swift; sourceTree = "<group>"; };
+		8306FCDA93098B63EA95C12E /* BarChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 		9164CB9DABA5CFACB24ED2F2 /* L3TensorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = L3TensorTests.swift; path = L3TensorTests.swift; sourceTree = "<group>"; };
+		A3B2CD6C8D99B99FA35DC783 /* MVP1ToolsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MVP1ToolsView.swift; sourceTree = "<group>"; };
+		A93812380D06DA81DC8460C2 /* ColorGridView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ColorGridView.swift; sourceTree = "<group>"; };
 		AAC4AD8669962E06AA4BE36A /* FrameFormatConverter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FrameFormatConverter.swift; sourceTree = "<group>"; };
 		B696D4BCCCA7EB4B2BB423C5 /* L0RawTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = L0RawTests.swift; path = L0RawTests.swift; sourceTree = "<group>"; };
 		B832BFF3A36151B13354CD88 /* MinimalGIFDebugTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MinimalGIFDebugTests.swift; path = ../../../RGB2GIF/Sources/Pipeline/MinimalGIFDebugTests.swift; sourceTree = "<group>"; };
+		BF1C173AB47F767C987ABF3A /* ResultsComparisonView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ResultsComparisonView.swift; sourceTree = "<group>"; };
+		C1A42EBE2ECE06D5786F4ABE /* ImportanceWeightEditorView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ImportanceWeightEditorView.swift; sourceTree = "<group>"; };
 		CROPVERIF0001A2B3C4D5E001 /* CropResizeVerificationTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CropResizeVerificationTests.swift; path = CropResizeVerificationTests.swift; sourceTree = "<group>"; };
+		F19394F3AF6F8603EA61C024 /* SliderWithLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SliderWithLabel.swift; sourceTree = "<group>"; };
 		F64E4EDE9AA8E2BD9FEE052C /* L2FrameTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = L2FrameTests.swift; path = L2FrameTests.swift; sourceTree = "<group>"; };
 		GIFDIAG00001A2B3C4D5E001 /* GIFStructureDiagnostic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GIFStructureDiagnostic.swift; path = GIFStructureDiagnostic.swift; sourceTree = "<group>"; };
 		MVP0APP00002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +125,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08F1B621985618121DDFAAF8 /* KataGo */ = {
+			isa = PBXGroup;
+			children = (
+				5CEBD02394D3844BC3C46241 /* SliceImportanceAnalyzer.swift */,
+			);
+			name = KataGo;
+			path = KataGo;
+			sourceTree = "<group>";
+		};
+		1C52593219F2198C724F519C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A93812380D06DA81DC8460C2 /* ColorGridView.swift */,
+				8306FCDA93098B63EA95C12E /* BarChartView.swift */,
+				F19394F3AF6F8603EA61C024 /* SliderWithLabel.swift */,
+			);
+			name = Components;
+			path = Components;
+			sourceTree = "<group>";
+		};
 		4FB3E1986723FF3F1EE28EBF /* Testing */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +162,42 @@
 			);
 			name = Testing;
 			path = Testing;
+			sourceTree = "<group>";
+		};
+		9AB8A9AE973E9DB40F15C56D /* MVP1 */ = {
+			isa = PBXGroup;
+			children = (
+				9E107E0EC34C4B13B197CDB4 /* Core */,
+				D97A6704AA2CF7E67925E6FE /* Views */,
+				1C52593219F2198C724F519C /* Components */,
+			);
+			name = MVP1;
+			path = MVP1;
+			sourceTree = "<group>";
+		};
+		9E107E0EC34C4B13B197CDB4 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				376933A9688DCE7E1B67089B /* ProcessingMode.swift */,
+				31FFE9AF1C3272F36C420ED9 /* MVP1State.swift */,
+			);
+			name = Core;
+			path = Core;
+			sourceTree = "<group>";
+		};
+		D97A6704AA2CF7E67925E6FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4F1E67D6B8A6D1BA7C0843EC /* ModeSelectionView.swift */,
+				A3B2CD6C8D99B99FA35DC783 /* MVP1ToolsView.swift */,
+				81058B46A4EC92C21594A9C0 /* SliceViewerView.swift */,
+				C1A42EBE2ECE06D5786F4ABE /* ImportanceWeightEditorView.swift */,
+				5E3A7C927DE8A7016A6B07CF /* KernelEditorView.swift */,
+				BF1C173AB47F767C987ABF3A /* ResultsComparisonView.swift */,
+				711BE77293600A32ECF8BF62 /* CentroidOverrideView.swift */,
+			);
+			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		MVP0GRP00001 = {
@@ -154,6 +236,8 @@
 				MVP0GRP00014 /* Pipeline */,
 				MVP0GRP00015 /* UI */,
 				4FB3E1986723FF3F1EE28EBF /* Testing */,
+				9AB8A9AE973E9DB40F15C56D /* MVP1 */,
+				08F1B621985618121DDFAAF8 /* KataGo */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -350,6 +434,19 @@
 				GIFDIAG00002A2B3C4D5E001 /* GIFStructureDiagnostic.swift in Sources */,
 				86F386AEAF8D118C18BA9386 /* PipelineTestSuite.swift in Sources */,
 				3BC9E6AAED5D57E9CC666DAE /* LZWDiagnosticTests.swift in Sources */,
+				CA3D24194ABC67D66D110BD1 /* ProcessingMode.swift in Sources */,
+				AF850B4E1284C56251B68FE2 /* MVP1State.swift in Sources */,
+				04787A1218085F1A6A8F5274 /* ModeSelectionView.swift in Sources */,
+				FFAD93AC9B151BC55961302D /* MVP1ToolsView.swift in Sources */,
+				28DBC40679C5613467C463F3 /* SliceViewerView.swift in Sources */,
+				424A06FD6DD434DF549D1AA5 /* ImportanceWeightEditorView.swift in Sources */,
+				1DF5608DD22318BAEF003FD5 /* KernelEditorView.swift in Sources */,
+				0E41A339694ED13838B2478E /* ResultsComparisonView.swift in Sources */,
+				8FBD821A26F0FD8371F5505C /* CentroidOverrideView.swift in Sources */,
+				702549865953B44D8200661A /* ColorGridView.swift in Sources */,
+				0D1CBB21C669B3AB75FDA758 /* BarChartView.swift in Sources */,
+				30D5D8C60F89708DE327509A /* SliderWithLabel.swift in Sources */,
+				6B5F795D34976588D7A21BAA /* SliceImportanceAnalyzer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

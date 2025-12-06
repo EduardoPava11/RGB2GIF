@@ -101,6 +101,11 @@ struct LZW_Optimized {
     ///   - minCodeSize: Minimum code size in bits (2-8, typically log2(paletteSize))
     /// - Returns: Array of sub-blocks, each ≤255 bytes
     static func compress(indices: [UInt8], minCodeSize: UInt8) throws -> [Data] {
+        // MVP0 VERIFICATION: Valid code size for 256-color palette
+        precondition(minCodeSize >= 2 && minCodeSize <= 8, "MVP0: minCodeSize must be 2-8, got \(minCodeSize)")
+        // MVP0 VERIFICATION: Non-empty input data
+        precondition(!indices.isEmpty, "MVP0: LZW input indices cannot be empty")
+
         guard minCodeSize >= 2 && minCodeSize <= 8 else {
             if DEBUG_LZW_ENCODER {
                 lzwLogger.error("❌ Invalid minCodeSize: \(minCodeSize) (must be 2-8)")

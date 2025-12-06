@@ -110,6 +110,8 @@ public struct GIF81Pipeline {
         guard frames.count == GIF81Config.frameCount else {
             throw RGB2GIFError.wrongFrameCount(got: frames.count, expected: GIF81Config.frameCount)
         }
+        // MVP0 VERIFICATION: Must have exactly 81 input frames
+        precondition(frames.count == 81, "MVP0: Pipeline requires exactly 81 frames, got \(frames.count)")
         pipelineLogger.info("Stage 0: Validated \(frames.count) input frames")
 
         // Create CBOR session for all exports
@@ -172,9 +174,13 @@ public struct GIF81Pipeline {
 
         // Sample center pixel from each of the 729 cells (9×9×9 grid)
         let sampledPixels = sampleCenterPixels(from: rgbFrames)
+        // MVP0 VERIFICATION: Must sample exactly 729 center pixels (9×9×9 grid)
+        precondition(sampledPixels.count == 729, "MVP0: Must sample exactly 729 pixels, got \(sampledPixels.count)")
         pipelineLogger.info("Stage L4_palette: Sampled \(sampledPixels.count) actual pixels (not averages)")
 
         let palette = await quantizer.quantizeFromPixels(sampledPixels, maxColors: GIF81Config.paletteSize)
+        // MVP0 VERIFICATION: Palette must have exactly 256 colors
+        precondition(palette.count == 256, "MVP0: Palette must have 256 colors, got \(palette.count)")
         pipelineLogger.info("Stage L4_palette: ✓ Generated \(palette.count)-color palette")
 
         // Export palette
@@ -189,6 +195,10 @@ public struct GIF81Pipeline {
         // ═══════════════════════════════════════════════════════════════════════
         pipelineLogger.info("Stage L5_indices: Mapping pixels to palette indices...")
         let frameIndices = try mapRGBFramesToPalette(rgbFrames, palette: palette)
+        // MVP0 VERIFICATION: Must produce 81 frames of palette indices
+        precondition(frameIndices.count == 81, "MVP0: Must have 81 frames of indices, got \(frameIndices.count)")
+        // MVP0 VERIFICATION: Each frame must have 6561 indices (81×81 pixels)
+        precondition(frameIndices.allSatisfy { $0.count == 6561 }, "MVP0: Each frame must have 6561 indices (81×81)")
         pipelineLogger.info("Stage L5_indices: ✓ Mapped \(81 * 81 * 81) pixels to indices")
 
         // Export indices
@@ -201,6 +211,8 @@ public struct GIF81Pipeline {
         // ═══════════════════════════════════════════════════════════════════════
         pipelineLogger.info("Stage L6_output: Compressing and writing GIF...")
         let compressedFrames = try compressFrames(frameIndices)
+        // MVP0 VERIFICATION: Must produce 81 LZW-compressed frames
+        precondition(compressedFrames.count == 81, "MVP0: Must have 81 compressed frames, got \(compressedFrames.count)")
         pipelineLogger.info("Stage L6_output: ✓ LZW compressed \(compressedFrames.count) frames")
 
         var gifConfig = GIFWriter.Config()

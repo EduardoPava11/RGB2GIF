@@ -56,6 +56,13 @@ public struct GIFWriter {
         compressedFrames: [[Data]],
         config: Config = Config()
     ) throws -> Data {
+        // MVP0 VERIFICATION: Dimensions must be 81×81
+        precondition(config.width == 81 && config.height == 81, "MVP0: GIF dimensions must be 81×81, got \(config.width)×\(config.height)")
+        // MVP0 VERIFICATION: Palette must have exactly 256 colors (MVP0 strict requirement)
+        precondition(palette.count == 256, "MVP0: Palette must have exactly 256 colors, got \(palette.count)")
+        // MVP0 VERIFICATION: Must have exactly 81 compressed frames
+        precondition(compressedFrames.count == 81, "MVP0: GIF must have exactly 81 frames, got \(compressedFrames.count)")
+
         var output = Data()
         output.reserveCapacity(1024 * 100)  // ~100KB initial
 

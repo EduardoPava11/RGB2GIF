@@ -93,6 +93,9 @@ public struct TensorCube729: Sendable {
                 kernel[y][x] = exp(-distSq / (2 * sigma * sigma))
             }
         }
+        // MVP0 VERIFICATION: Spatial kernel must be 9×9
+        precondition(kernel.count == 9, "MVP0: Spatial kernel must have 9 rows")
+        precondition(kernel[0].count == 9, "MVP0: Spatial kernel must have 9 columns")
         return kernel
     }()
 
@@ -106,6 +109,8 @@ public struct TensorCube729: Sendable {
             let dt = Float(t) - center
             kernel[t] = exp(-(dt * dt) / (2 * sigma * sigma))
         }
+        // MVP0 VERIFICATION: Temporal kernel must be 9 elements
+        precondition(kernel.count == 9, "MVP0: Temporal kernel must have 9 elements")
         return kernel
     }()
 
@@ -130,6 +135,8 @@ public struct TensorCube729: Sendable {
         guard frames.count == Self.sourceDimension else {
             throw RGB2GIFError.wrongFrameCount(got: frames.count, expected: Self.sourceDimension)
         }
+        // MVP0 VERIFICATION: 81 frames required for 9×9×9 tensor construction
+        precondition(frames.count == 81, "MVP0: TensorCube729 requires exactly 81 frames, got \(frames.count)")
 
         self.init()
 
@@ -206,6 +213,8 @@ public struct TensorCube729: Sendable {
         guard rgbFrames.count == Self.sourceDimension else {
             throw RGB2GIFError.wrongFrameCount(got: rgbFrames.count, expected: Self.sourceDimension)
         }
+        // MVP0 VERIFICATION: 81 RGB Data arrays required for 9×9×9 tensor
+        precondition(rgbFrames.count == 81, "MVP0: TensorCube729 requires exactly 81 RGB frames, got \(rgbFrames.count)")
 
         self.init()
 
@@ -217,6 +226,8 @@ public struct TensorCube729: Sendable {
                 tensorLogger.error("Frame \(frameIndex) has \(rgbData.count) bytes, expected \(expectedBytes)")
                 throw RGB2GIFError.cborExportFailed("RGB frame \(frameIndex) size mismatch: \(rgbData.count) vs \(expectedBytes)")
             }
+            // MVP0 VERIFICATION: Each RGB frame must be exactly 19683 bytes (81×81×3)
+            precondition(rgbData.count == 19683, "MVP0: RGB frame \(frameIndex) must be 19683 bytes, got \(rgbData.count)")
 
             // Which temporal cell and offset
             let tCell = frameIndex / Self.downsampleFactor
@@ -273,7 +284,25 @@ public struct TensorCube729: Sendable {
             }
         }
 
+        // MVP0 VERIFICATION: Must produce exactly 729 centroids (9×9×9 tensor)
+        precondition(colors.count == 729, "MVP0: centroidColors() must return exactly 729 colors, got \(colors.count)")
+
         return colors
+    }
+
+    /// Get centroid color at specific tensor position
+    /// - Parameters:
+    ///   - t: Temporal index (0-8)
+    ///   - y: Spatial Y index (0-8)
+    ///   - x: Spatial X index (0-8)
+    /// - Returns: RGB color tuple for this cell
+    public func centroid(t: Int, y: Int, x: Int) -> (r: UInt8, g: UInt8, b: UInt8) {
+        guard t >= 0 && t < Self.gridDimension,
+              y >= 0 && y < Self.gridDimension,
+              x >= 0 && x < Self.gridDimension else {
+            return (r: 0, g: 0, b: 0)
+        }
+        return cells[t][y][x].centroidColor()
     }
 
     /// Access a specific cell

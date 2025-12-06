@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import SwiftUI
 import os.log
 
 private let uiLogger = Logger(subsystem: "com.rgb2gif", category: "CaptureVC")
@@ -211,6 +212,112 @@ public class CaptureViewController: UIViewController {
     }
 
     // MARK: - Processing
+
+    // MARK: - Mode Selection
+
+    private func showModeSelection() async {
+        let frameCount = await frameBuffer.count
+
+        await MainActor.run {
+            statusLabel.text = "Choose Mode"
+            statusLabel.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.6)
+
+            let modeSelectionView = ModeSelectionView(
+                frameCount: frameCount,
+                onModeSelected: { [weak self] mode in
+                    self?.handleModeSelected(mode)
+                },
+                onCancel: { [weak self] in
+                    self?.handleModeSelectionCancelled()
+                }
+            )
+
+            let hostingController = UIHostingController(rootView: modeSelectionView)
+            hostingController.modalPresentationStyle = .fullScreen
+            self.present(hostingController, animated: true)
+        }
+    }
+
+    private func handleModeSelected(_ mode: ProcessingMode) {
+        dismiss(animated: true) { [weak self] in
+            switch mode {
+            case .mvp0:
+                // Instant processing - use existing pipeline
+                Task {
+                    await self?.processFrames()
+                }
+            case .mvp1:
+                // Interactive mode - show MVP1 tools
+                Task {
+                    await self?.showMVP1Tools()
+                }
+            }
+        }
+    }
+
+    private func handleModeSelectionCancelled() {
+        dismiss(animated: true) { [weak self] in
+            Task {
+                await self?.frameBuffer.reset()
+            }
+            self?.resetUI()
+        }
+    }
+
+    private func showMVP1Tools() async {
+        let frames = await frameBuffer.snapshot()
+
+        await MainActor.run {
+            statusLabel.text = "Loading MVP1..."
+            statusLabel.backgroundColor = UIColor.systemPurple.withAlphaComponent(0.6)
+        }
+
+        do {
+            // Convert CGImages to RGB Data for MVP1State
+            let rgbFrames = frames.map { frame -> Data in
+                // Use safeCropAndResizeToRGB which handles the conversion
+                return FrameFormatConverter.safeCropAndResizeToRGB(frame, targetSize: 81)
+            }
+
+            let mvp1State = try MVP1State(rgbFrames: rgbFrames)
+
+            await MainActor.run {
+                let mvp1View = MVP1ToolsView(state: mvp1State) { [weak self] in
+                    // On completion (generate GIF)
+                    self?.dismiss(animated: true) {
+                        Task {
+                            await self?.processFramesWithMVP1State(mvp1State)
+                        }
+                    }
+                } onCancel: { [weak self] in
+                    self?.dismiss(animated: true) {
+                        Task {
+                            await self?.frameBuffer.reset()
+                        }
+                        self?.resetUI()
+                    }
+                }
+
+                let hostingController = UIHostingController(rootView: mvp1View)
+                hostingController.modalPresentationStyle = .fullScreen
+                self.present(hostingController, animated: true)
+            }
+        } catch {
+            uiLogger.error("Failed to initialize MVP1: \(error)")
+            await MainActor.run {
+                showAlert(title: "MVP1 Error", message: "Failed to initialize: \(error.localizedDescription)")
+                resetUI()
+            }
+        }
+    }
+
+    private func processFramesWithMVP1State(_ state: MVP1State) async {
+        // TODO: Use MVP1 state's configured weights when processing
+        // For now, fall back to standard processing
+        await processFrames()
+    }
+
+    // MARK: - Frame Processing
 
     private func processFrames() async {
         isProcessing = true
@@ -562,7 +669,7 @@ extension CaptureViewController: CameraFrameDelegate {
             if isFull {
                 isCapturing = false
                 cameraManager.frameDelegate = nil
-                await processFrames()
+                await showModeSelection()
             }
         }
     }

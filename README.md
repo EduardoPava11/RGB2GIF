@@ -164,61 +164,90 @@ Decoder: read code C → add entry N-1 (based on prev + current[0])
 
 ---
 
-### MVP1: Dual Neural Network Integration (🔮 PLANNED)
+### MVP1: Interactive Tools for Tensor Control (✅ COMPLETE)
 
-**Goal**: Replace static weighted centroids with neural network-derived importance weights.
+**Goal**: Provide user tools to control HOW 81×81×81 pixels become 729 centroids.
 
-**Architecture**:
+**Key Insight**: Spatial NN and Temporal NN see DIFFERENT slice views (asymmetric):
+- **Spatial NN** MUST use X/Y slices (9 temporal groups)
+- **Temporal NN** CAN use X/T or Y/T slices (81 spatial positions)
+
+**User Flow**:
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                         MVP1: DUAL GO NEURAL NETWORKS                           │
+│                           MVP1 USER FLOW                                        │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
-│  ┌─────────────────────┐         ┌─────────────────────┐                        │
-│  │   SPATIAL NN        │         │   TEMPORAL NN       │                        │
-│  │   (KataGo-derived)  │         │   (KataGo-derived)  │                        │
-│  ├─────────────────────┤         ├─────────────────────┤                        │
-│  │ Input: 9×9 color    │         │ Input: 9-frame      │                        │
-│  │        positions    │         │        sequence     │                        │
-│  │                     │         │                     │                        │
-│  │ Output: Per-cell    │         │ Output: Per-cell    │                        │
-│  │         importance  │         │         motion      │                        │
-│  │         weights     │         │         weights     │                        │
-│  └──────────┬──────────┘         └──────────┬──────────┘                        │
-│             │                               │                                   │
-│             └───────────┬───────────────────┘                                   │
-│                         │                                                       │
-│                         ▼                                                       │
-│              ┌─────────────────────┐                                            │
-│              │   WEIGHT FUSION     │                                            │
-│              │   spatial × temporal │                                            │
-│              └──────────┬──────────┘                                            │
-│                         │                                                       │
-│                         ▼                                                       │
-│              ┌─────────────────────┐                                            │
-│              │   729 WEIGHTED      │                                            │
-│              │   CENTROIDS         │                                            │
-│              └─────────────────────┘                                            │
+│  1. Capture 81 frames (81×81 each)                                              │
+│                                                                                 │
+│  2. Choose processing mode:                                                     │
+│     • MVP0: Instant (Gaussian → 729 → 256 → GIF)                               │
+│     • MVP1: Explore with tools                                                  │
+│                                                                                 │
+│  3. If MVP1, use 5 interactive tools:                                           │
+│                                                                                 │
+│     ┌──────────────────────────────────────────────────────────────────────┐   │
+│     │  Tool 1: SLICE VIEWER                                                 │   │
+│     │  See any X/Y, X/T, or Y/T slice of 81×81×81 cube                     │   │
+│     ├──────────────────────────────────────────────────────────────────────┤   │
+│     │  Tool 2: IMPORTANCE WEIGHT EDITOR                                     │   │
+│     │  Configure analysis weights (colorVariance, edgeDensity, motion...)  │   │
+│     ├──────────────────────────────────────────────────────────────────────┤   │
+│     │  Tool 3: KERNEL EDITOR                                                │   │
+│     │  Configure Gaussian σ for spatial and temporal averaging             │   │
+│     ├──────────────────────────────────────────────────────────────────────┤   │
+│     │  Tool 4: RESULTS COMPARISON                                           │   │
+│     │  View spatial vs temporal importance scores and rankings             │   │
+│     ├──────────────────────────────────────────────────────────────────────┤   │
+│     │  Tool 5: CENTROID OVERRIDE                                            │   │
+│     │  Lock cells, override RGB values, then generate GIF                  │   │
+│     └──────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│  4. Click "Generate" → applies configured weights → standard MVP0 pipeline     │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Why Go Neural Networks?**
+**What Each Tool Does**:
 
-The game of Go operates on a 9×9/19×19 board where:
-- **Spatial patterns** determine territory and influence
-- **Temporal sequences** determine strategic value (joseki, fuseki)
-- **Attention** must balance local tactics vs. global strategy
+| Tool | Purpose | Configurable Parameters |
+|------|---------|------------------------|
+| **Slice Viewer** | Visualize 9×9 centroid grids from X/Y, X/T, Y/T perspectives | Slice type, slice index |
+| **Weight Editor** | Control importance analysis | colorVarianceWeight, edgeDensityWeight, motionWeight, frameDeltaWeight, temperature |
+| **Kernel Editor** | Control downsampling | Spatial σ (default 2.5), Temporal σ (default 2.0) |
+| **Results View** | See analysis output | Read-only: spatial/temporal importance scores |
+| **Override** | Manual cell control | RGB overrides, locked cells, weight overrides |
 
-These properties map directly to GIF compression:
-- **Spatial importance**: Which regions deserve more color fidelity?
-- **Temporal importance**: Which frames show significant motion?
-- **Attention balance**: Static backgrounds vs. moving subjects
+**Presets Available**:
+- **Balanced**: Default weights for general use
+- **Edge Focus**: Emphasizes spatial detail (edges)
+- **Motion Focus**: Emphasizes temporal smoothness
+- **Uniform**: Equal importance across all slices
 
-**KataGo Integration**:
-- Use pre-trained KataGo 9×9 weights
-- Repurpose "territory estimation" as "color importance"
-- Repurpose "move prediction" as "motion saliency"
+**Architecture (SwiftUI + UIKit Hybrid)**:
+```
+RGB2GIF/Sources/MVP1/
+├── Core/
+│   ├── ProcessingMode.swift       # Enum: mvp0, mvp1
+│   └── MVP1State.swift            # Observable state for all tools
+├── Views/
+│   ├── ModeSelectionView.swift    # MVP0/MVP1 picker after capture
+│   ├── MVP1ToolsView.swift        # Tab bar with 5 tools
+│   ├── SliceViewerView.swift      # Tool 1
+│   ├── ImportanceWeightEditorView.swift  # Tool 2
+│   ├── KernelEditorView.swift     # Tool 3
+│   ├── ResultsComparisonView.swift # Tool 4
+│   └── CentroidOverrideView.swift # Tool 5
+└── Components/
+    ├── ColorGridView.swift        # Reusable 9×9 color grid
+    ├── BarChartView.swift         # Importance bar chart
+    └── SliderWithLabel.swift      # Labeled slider
+```
+
+**Leverages Existing Infrastructure**:
+- `SliceImportanceAnalyzer` - Already computes spatial/temporal importance
+- `TensorCube729` - 9×9×9 tensor with Gaussian kernels
+- Standard MVP0 pipeline for final GIF generation (729 → 256 → LZW → GIF)
 
 ---
 
@@ -395,7 +424,12 @@ RGB2GIF/
 │       ├── CBOR/             # Session management, exporters
 │       ├── Core/             # Error definitions
 │       ├── GIF/              # LZWEncoder, GIFWriter, PhotosSaver
-│       ├── Pipeline/         # GIF81Pipeline, OctreeQuantizer, VoxelCube729
+│       ├── KataGo/           # SliceImportanceAnalyzer, NN infrastructure
+│       ├── MVP1/             # Interactive tools (SwiftUI)
+│       │   ├── Core/         # ProcessingMode, MVP1State
+│       │   ├── Views/        # 5 tool views + mode selection
+│       │   └── Components/   # Reusable UI components
+│       ├── Pipeline/         # GIF81Pipeline, OctreeQuantizer, TensorCube729
 │       ├── Testing/          # Comprehensive test suite
 │       └── UI/               # CaptureViewController
 ├── Archive/                  # Legacy/experimental code
