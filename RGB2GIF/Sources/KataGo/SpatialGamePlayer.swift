@@ -67,7 +67,7 @@ public final class SpatialGamePlayer: BaseGamePlayer, GamePlayer, @unchecked Sen
     /// - Parameters:
     ///   - inference: KataGo inference engine (should use Japanese rules)
     ///   - config: Stone seeding configuration (default: spatial preset)
-    public init(inference: KataGoInference, config: StoneSeedingConfig = .spatial) {
+    public override init(inference: KataGoInference, config: StoneSeedingConfig = .spatial) {
         super.init(inference: inference, config: config)
     }
 

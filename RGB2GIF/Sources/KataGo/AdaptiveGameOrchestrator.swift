@@ -285,14 +285,14 @@ public actor AdaptiveGameOrchestrator {
         for t in spatialSlices {
             let (features, global) = try BoardEncoder.encodeSpatialSlice(centroids: centroids, timeSlice: t)
             let result = try await spatial.predict(spatial: features, global: global)
-            spatialPolicies[t] = spatial.extractAttentionWeights(from: result)
+            spatialPolicies[t] = await spatial.extractAttentionWeights(from: result)
         }
 
         // Temporal processing
         for x in temporalSlices {
             let (features, global) = try BoardEncoder.encodeTemporalSlice(centroids: centroids, column: x)
             let result = try await temporal.predict(spatial: features, global: global)
-            temporalPolicies[x] = temporal.extractAttentionWeights(from: result)
+            temporalPolicies[x] = await temporal.extractAttentionWeights(from: result)
         }
 
         // Interpolate missing
@@ -431,7 +431,7 @@ extension BoardEncoder {
     static func encodeSpatialSlice(
         centroids: [(r: UInt8, g: UInt8, b: UInt8)],
         timeSlice t: Int
-    ) throws -> (spatial: [Float], global: [Float]) {
+    ) throws -> (spatial: MLMultiArray, global: MLMultiArray) {
         // Extract 81 colors for this time slice
         var sliceCentroids = [(r: UInt8, g: UInt8, b: UInt8)]()
         sliceCentroids.reserveCapacity(81)
@@ -455,7 +455,7 @@ extension BoardEncoder {
     static func encodeTemporalSlice(
         centroids: [(r: UInt8, g: UInt8, b: UInt8)],
         column x: Int
-    ) throws -> (spatial: [Float], global: [Float]) {
+    ) throws -> (spatial: MLMultiArray, global: MLMultiArray) {
         // Extract colors for this column (all t, all y, fixed x)
         var sliceCentroids = [(r: UInt8, g: UInt8, b: UInt8)]()
         sliceCentroids.reserveCapacity(81)
@@ -482,7 +482,7 @@ extension AdaptiveGameOrchestrator.AdaptiveResult: CustomStringConvertible {
           Inferences: \(inferenceCount)/18 (\(String(format: "%.1fx", speedupRatio)) speedup)
           Spatial: \(processedSpatialSlices.sorted())
           Temporal: \(processedTemporalSlices.sorted())
-          Weights: min=\(String(format: "%.4f", weights.merged.min() ?? 0)), max=\(String(format: "%.4f", weights.merged.max() ?? 0))
+          Weights: min=\(String(format: "%.4f", weights.weights.min() ?? 0)), max=\(String(format: "%.4f", weights.weights.max() ?? 0))
         """
     }
 }

@@ -82,6 +82,36 @@ extension Move {
     enum CodingKeys: String, CodingKey {
         case row, col, color, moveNumber, confidence
     }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.row = try container.decode(Int.self, forKey: .row)
+        self.col = try container.decode(Int.self, forKey: .col)
+        self.color = try container.decode(StoneColor.self, forKey: .color)
+        self.moveNumber = try container.decode(Int.self, forKey: .moveNumber)
+        self.confidence = try container.decodeIfPresent(Float.self, forKey: .confidence)
+        self.alternatives = nil  // Tuples can't be decoded, skip
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(row, forKey: .row)
+        try container.encode(col, forKey: .col)
+        try container.encode(color, forKey: .color)
+        try container.encode(moveNumber, forKey: .moveNumber)
+        try container.encodeIfPresent(confidence, forKey: .confidence)
+        // Skip alternatives (tuple can't be encoded)
+    }
+
+    // Manual Equatable implementation (tuples can't auto-conform)
+    public static func == (lhs: Move, rhs: Move) -> Bool {
+        lhs.row == rhs.row &&
+        lhs.col == rhs.col &&
+        lhs.color == rhs.color &&
+        lhs.moveNumber == rhs.moveNumber &&
+        lhs.confidence == rhs.confidence
+        // Ignore alternatives for equality check
+    }
 }
 
 // MARK: - Game Record

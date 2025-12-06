@@ -44,7 +44,7 @@ import CoreML
 // MARK: - Stone Color
 
 /// Represents a stone on the Go board
-public enum StoneColor: Int, Sendable {
+public enum StoneColor: Int, Sendable, Codable {
     case empty = 0
     case black = 1  // High importance (needs attention)
     case white = 2  // Low importance (can approximate)

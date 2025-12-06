@@ -71,7 +71,7 @@ public final class TemporalGamePlayer: BaseGamePlayer, GamePlayer, @unchecked Se
     /// - Parameters:
     ///   - inference: KataGo inference engine (should use Tromp-Taylor rules)
     ///   - config: Stone seeding configuration (default: temporal preset)
-    public init(inference: KataGoInference, config: StoneSeedingConfig = .temporal) {
+    public override init(inference: KataGoInference, config: StoneSeedingConfig = .temporal) {
         super.init(inference: inference, config: config)
     }
 

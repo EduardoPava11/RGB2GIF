@@ -102,7 +102,7 @@ public struct VoxelCell {
     // MARK: - GO Game Properties
 
     /// "Stone color" for GO game mechanics (derived from dominant index)
-    public var stoneColor: StoneColor {
+    public var stoneColor: VoxelStoneColor {
         // Map 256 palette indices to 3 stone colors
         // Black: indices 0-84, White: indices 85-169, Empty: indices 170-255
         if dominantIndex < 85 {
@@ -131,8 +131,8 @@ public struct VoxelCell {
     public init() {}
 }
 
-/// Stone colors for GO game mechanics
-public enum StoneColor: UInt8, CaseIterable {
+/// Stone colors for Voxel GO game mechanics (distinct from KataGo's StoneColor)
+public enum VoxelStoneColor: UInt8, CaseIterable, Sendable {
     case empty = 0
     case black = 1
     case white = 2
@@ -420,7 +420,7 @@ public struct VoxelCube729 {
     }
 
     /// Get stone colors as 9×9×9 tensor (for GO game)
-    public func stoneTensor() -> [[[StoneColor]]] {
+    public func stoneTensor() -> [[[VoxelStoneColor]]] {
         return cells.map { layer in
             layer.map { row in
                 row.map { $0.stoneColor }
@@ -437,7 +437,7 @@ public struct VoxelCube729 {
         let avgVariance = flat.map { $0.colorVariance }.reduce(0, +) / Float(flat.count)
         let avgMotion = flat.map { $0.motionMagnitude }.reduce(0, +) / Float(flat.count)
 
-        var stoneDistribution: [StoneColor: Int] = [.empty: 0, .black: 0, .white: 0]
+        var stoneDistribution: [VoxelStoneColor: Int] = [.empty: 0, .black: 0, .white: 0]
         for cell in flat {
             stoneDistribution[cell.stoneColor, default: 0] += 1
         }
@@ -459,7 +459,7 @@ public struct VoxelCube729 {
 public struct CubeStatistics {
     public let averageColorVariance: Float
     public let averageMotionMagnitude: Float
-    public let stoneDistribution: [StoneColor: Int]
+    public let stoneDistribution: [VoxelStoneColor: Int]
     public let uniqueGroupCount: Int
 
     public var description: String {

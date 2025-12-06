@@ -176,8 +176,8 @@ public actor DualPlayerAttention {
         let (spatialResult, temporalResult) = try await (spatialOutput, temporalOutput)
 
         // Extract attention weights
-        let queryWeights = spatial.extractAttentionWeights(from: spatialResult)
-        let keyWeights = temporal.extractAttentionWeights(from: temporalResult)
+        let queryWeights = await spatial.extractAttentionWeights(from: spatialResult)
+        let keyWeights = await temporal.extractAttentionWeights(from: temporalResult)
 
         return AttentionWeights(
             query: queryWeights,
@@ -222,8 +222,8 @@ public actor DualPlayerAttention {
         let (spatialResult, temporalResult) = try await (spatialOutput, temporalOutput)
 
         // Extract attention weights
-        let queryWeights = spatial.extractAttentionWeights(from: spatialResult)
-        let keyWeights = temporal.extractAttentionWeights(from: temporalResult)
+        let queryWeights = await spatial.extractAttentionWeights(from: spatialResult)
+        let keyWeights = await temporal.extractAttentionWeights(from: temporalResult)
 
         return AttentionWeights(
             query: queryWeights,
@@ -269,8 +269,8 @@ public actor DualPlayerAttention {
         let (spatialResult, temporalResult) = try await (spatialOutput, temporalOutput)
 
         // Use ownership instead of policy
-        let queryWeights = spatial.extractOwnershipWeights(from: spatialResult)
-        let keyWeights = temporal.extractOwnershipWeights(from: temporalResult)
+        let queryWeights = await spatial.extractOwnershipWeights(from: spatialResult)
+        let keyWeights = await temporal.extractOwnershipWeights(from: temporalResult)
 
         return AttentionWeights(
             query: queryWeights,

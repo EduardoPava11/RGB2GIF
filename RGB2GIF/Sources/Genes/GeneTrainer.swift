@@ -427,12 +427,12 @@ public actor GeneTrainer {
 
     /// Clip gradients to prevent instability.
     private func clipGradients(_ gradients: GeneGradients) -> GeneGradients {
-        let norm = sqrt(
-            gradients.alphaGradients.map { $0 * $0 }.reduce(0, +) +
-            gradients.temperatureGradient * gradients.temperatureGradient +
-            gradients.blackThresholdGradient * gradients.blackThresholdGradient +
-            gradients.whiteThresholdGradient * gradients.whiteThresholdGradient
-        )
+        // Break up complex expression to help the compiler
+        let alphaSquared: Float = gradients.alphaGradients.map { $0 * $0 }.reduce(0, +)
+        let tempSquared: Float = gradients.temperatureGradient * gradients.temperatureGradient
+        let blackSquared: Float = gradients.blackThresholdGradient * gradients.blackThresholdGradient
+        let whiteSquared: Float = gradients.whiteThresholdGradient * gradients.whiteThresholdGradient
+        let norm = sqrt(alphaSquared + tempSquared + blackSquared + whiteSquared)
 
         if norm > config.maxGradientNorm {
             let scale = config.maxGradientNorm / norm
